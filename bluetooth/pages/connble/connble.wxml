@@ -31,10 +31,12 @@
 
 <view class="connect" bindtap="getCharc">获取characteristics</view>
 
-<view class="title">characteristics</view>
+<view class="title"  >characteristics</view>
 <view wx:for="{{characteristics}}">
 <view class="line"></view>
-  <view class="item">{{item.uuid}}</view>
+  <view class="item" 
+  bindtap="readCharcter"
+  data-uuid="{{item.uuid}}">{{item.uuid}}</view>
   <view class="item">read - {{item.properties.read}}</view>
   <view class="item">write - {{item.properties.write}}</view>
   <view class="item">notify - {{item.properties.notify}}</view>

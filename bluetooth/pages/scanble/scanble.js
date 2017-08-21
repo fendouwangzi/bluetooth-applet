@@ -19,7 +19,7 @@ Page({
         console.log(res);
         //start discovery devices
         wx.startBluetoothDevicesDiscovery({
-          services: [],
+          services: ['FEE7'],
           success: function (res) {
             console.log("startBluetoothDevicesDiscovery: success");
             console.log(res);
@@ -36,6 +36,16 @@ Page({
               console.log(that.data.list);
             })
           },
+        })
+        wx.getBluetoothAdapterState({
+          success: function (res) {
+            console.log('getBluetoothAdapterState--discovering--'+res.discovering)
+            console.log('getBluetoothAdapterState--available--' + res.available)
+            console.log('getBluetoothAdapterState--errMsg--' + res.errMsg)
+          }
+        })
+        wx.onBluetoothAdapterStateChange(function (res) {
+          console.log(`adapterState changed, now is`, res)
         })
       },
 
